@@ -16,17 +16,6 @@
   color: red;
 }
 
-.lift_error {
-  color: red;
-}
-
-.lift_warning {
-  color: yellow;
-}
-
-.lift_notice {
-}
-
 .sidebar ul {
 	margin:0;
 	padding:0;
@@ -67,23 +56,23 @@
   <body>
     <div class="container">
       <div class="column span-12 last" style="text-align: right">
-        <h1 class="alt">chat_app<img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"/></h1>
+        <h1 class="alt">Chat App<img alt="" id="ajax-loader" style="display:none; margin-bottom: 0px; margin-left: 5px" src="/images/ajax-loader.gif"/></h1>
       </div>
 
       <hr/>
 
       <div class="column span-6 colborder sidebar">
         <hr class="space" />
-        <span class="lift:Menu.builder" />	
-        <div>
-          <span class="lift:Msgs?showAll=true"/>
-          <hr class="space" />
-        </div>
+
+	<span class="lift:Menu.builder"/>
+
+        <div class="lift:Msgs?showAll=true"/>
+        <hr class="space" />
       </div>
 
       <div class="column span-17 last">
         <div id="content" >
-	  <!-- The HTML content will go here -->
+	  <!-- HTML content will be inserted here -->
 	</div>
       </div>
 
@@ -91,9 +80,9 @@
       <div class="column span-23 last" style="text-align: center">
         <h4 class="alt">
           <a href="http://www.liftweb.net"><i>Lift</i></a> 
-	        is Copyright 2007-2010 WorldWide Conferencing, LLC.  Distributed under an Apache 2.0 License.</h4>
+	  is Copyright 2007-2011 WorldWide Conferencing, LLC.
+	  Distributed under an Apache 2.0 License.</h4>
       </div>
-      
     </div>
   </body>
 </html>
