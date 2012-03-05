@@ -17,18 +17,28 @@ class Article(val publication: String,
               val edition: Date,
               val page: Int,
               val title: String,
-              val desc: String,
+              val description: String,
               val notes: String,
               val categories: List[String]) {
+  
+  /**
+   * <p>Convenience constructor - the description and notes probably aren't likely to be filled in very often, but
+   * shorthanding the edition date string probably is.</p>
+   */
+  def this(publication: String,
+           edition: String,
+           page: Int,
+           title: String,
+           categories: List[String]) = this(publication, Article.dFormat.parse(edition), page, title, "", "", categories)
 
 }
 
 object Article {
     
-  val format = new java.text.SimpleDateFormat("yyyy-MM-dd")
+  val dFormat = new java.text.SimpleDateFormat("MMM yyyy")
   
   val mockArticle1 = new Article("Cruising World", 
-                                 format.parse("2012-02-01"),
+                                 dFormat.parse("Feb 2012"),
                                  23,
                                  "How to foo your bar",
                                  "Describes what foos are best in bolstering your bar",
@@ -37,7 +47,7 @@ object Article {
   
   
   val mockArticle2 = new Article("Sailing World", 
-                                 format.parse("2011-12-15"),
+                                 dFormat.parse("December 2011"),
                                  7,
                                  "Lorem Ipsum",
                                  "Whatever description you want goes here",
