@@ -22,5 +22,6 @@ class ArticleSuite extends FunSuite {
                                 "",
                                 List("foo","bar"))
     assertNotNull(myArticle)
+    assertEquals(2, myArticle.categories.size)
   }
 }
