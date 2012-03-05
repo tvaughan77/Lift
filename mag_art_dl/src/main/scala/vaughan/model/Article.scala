@@ -21,6 +21,12 @@ class Article(val publication: String,
               val notes: String,
               val categories: List[String]) {
   
+  require(publication != null && !publication.isEmpty)
+  require(edition!= null)
+  require(page > 0)
+  require(title != null && !title.isEmpty)
+  require(categories != null && categories.size > 0)
+  
   /**
    * <p>Convenience constructor - the description and notes probably aren't likely to be filled in very often, but
    * shorthanding the edition date string probably is.</p>

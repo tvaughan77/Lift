@@ -10,8 +10,9 @@ import scala.io.Source
 @RunWith(classOf[JUnitRunner])
 class TabSeperatedArticleParserSuite extends FunSuite {
 
-  test("Reading from a test source produces 2 articles") {
+  test("Reading from a test source file with a header row produces 1 articles") {
     val source = Source.fromInputStream(getClass.getResourceAsStream("one_article.tdf"))
-    assertEquals(2, TabSeperatedArticleParser.parseSource(source).size)
+    val parser = new TabSeperatedArticleParser(true)
+    assertEquals(1, parser.parseSource(source).size)
   }
 }

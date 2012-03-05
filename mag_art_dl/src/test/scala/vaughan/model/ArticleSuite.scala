@@ -37,4 +37,10 @@ class ArticleSuite extends FunSuite {
     assertEquals(3, myArticle.categories.size)
     assertEquals(format.parse("2011-07-01"), myArticle.edition)
   }
+  
+  test("Not providing a publication is an exception") {
+    intercept[IllegalArgumentException] {
+      new Article("", "Jul 2011", 1, "Title", List("foo"))
+    }
+  }
 }
