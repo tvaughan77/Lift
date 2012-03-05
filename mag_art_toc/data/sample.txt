@@ -1,0 +1,1 @@
+pub	issue	title	page	desc	notes	tagsSailing World	01/01/12	Foo	12	How to foo		cruisingSailing World	01/01/12	Bar	14	MOB Drills		"electronics, techniques"Cruising World	02/01/12	Baz	16	Whatever	my first note	cruising

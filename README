@@ -1,0 +1,7 @@
+Repository to hold Lift projects I'm using to both explore the platform and learn more about scala
+
+The "chat_app" is straight out of the lift site
+
+The "mag_art_toc" is a lift app I'm going to attempt to develop using MongoDB and maybe CloudFoundry to implement a "table of contents" producer for a bunch of sailing articles I've snipped out of various magazines. (Short for "magazine articles table-of-contents")
+
+
