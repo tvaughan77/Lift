@@ -11,8 +11,11 @@ import scala.io.Source
  * 
  * @author tom.vaughan
  */
-class TabSeperatedArticleParser(val hasHeaderRow: Boolean) extends ArticleParser with LogHelper {
+class TabSeparatedArticleParser(val hasHeaderRow: Boolean) extends ArticleParser with LogHelper {
   
+  /**
+   * Auxillary constructor that defaults a parser to not having a header row
+   */
   def this() = this(false)
   
   /**
@@ -27,14 +30,14 @@ class TabSeperatedArticleParser(val hasHeaderRow: Boolean) extends ArticleParser
 
     val articles = scala.collection.mutable.Set.empty[Article]
     for(line <- lines) 
-      articles += TabSeperatedArticleParser.parseLine(line)
+      articles += TabSeparatedArticleParser.parseLine(line)
     
     articles.toList
   }
 }
 
 
-object TabSeperatedArticleParser extends LogHelper {
+object TabSeparatedArticleParser extends LogHelper {
   
   /**
    * @param line a single line containing exactly 7 tokens of tab-separated information in it, with this spec:
