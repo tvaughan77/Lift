@@ -55,7 +55,7 @@ object TabSeperatedArticleParser extends LogHelper {
     
     val edition = Article.dFormat.parse(tokens(1))
     val page = tokens(2).toInt
-    val categories = tokens(6).split(",").toList
+    val categories = tokens(6).split(",").toList map(_.trim)
     
     debug("categories = %s", categories.mkString)
     
