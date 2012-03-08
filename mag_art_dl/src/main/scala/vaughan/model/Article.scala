@@ -14,13 +14,14 @@ import java.text.SimpleDateFormat
  * @author tom.vaughan
  * @since 2012/03/05
  */
-class Article(val publication: String,
-              val edition: Date,
-              val page: Int,
-              val title: String,
-              val description: String,
-              val notes: String,
-              val categories: List[String]) extends Ordered[Article] {
+case class Article(id: String,
+                   publication: String,
+                   edition: Date,
+                   page: Int,
+                   title: String,
+                   description: String,
+                   notes: String,
+                   categories: List[String]) extends Ordered[Article] {
   
   require(publication != null && !publication.isEmpty)
   require(edition!= null)
@@ -36,7 +37,7 @@ class Article(val publication: String,
            edition: String,
            page: Int,
            title: String,
-           categories: List[String]) = this(publication, Article.dFormat.parse(edition), page, title, "", "", categories)
+           categories: List[String]) = this("", publication, Article.dFormat.parse(edition), page, title, "", "", categories)
 
   /**
    * <p>The natural sorting of Articles first by publication date and then by title</p>
@@ -63,7 +64,8 @@ object Article {
   /**
    * Creates a new article with a bunch of sensible defaults
    */
-  def mockInstance(publication: String       = "Cruising World",
+  def mockInstance(id:          String       = "",
+                   publication: String       = "Cruising World",
                    edition:     String       = "Jan 2012",
                    page:        Int          = 123,
                    title:       String       = "Lorem Ipsum",
@@ -72,6 +74,6 @@ object Article {
                    categories:  List[String] = List("foo", "bar")
                   ): Article = {
     val editionDate = Article.dFormat.parse(edition)
-    new Article(publication, editionDate, page, title, description, notes, categories)
+    Article(id, publication, editionDate, page, title, description, notes, categories)
   }
 }

@@ -12,13 +12,14 @@ import java.text.SimpleDateFormat
 class ArticleSuite extends FunSuite {
 
   test("Construct a normal Article using the full constructor") {
-    val myArticle = new Article("Cruising World", 
-                                new java.util.Date(),
-                                23,
-                                "How to foo your bar",
-                                "Describes what foos are best in bolstering your bar",
-                                "",
-                                List("foo","bar"))
+    val myArticle = Article("some-id-123",
+                            "Cruising World", 
+                            new java.util.Date(),
+                            23,
+                            "How to foo your bar",
+                            "Describes what foos are best in bolstering your bar",
+                            "",
+                            List("foo","bar"))
     assertNotNull(myArticle)
     assertEquals(2, myArticle.categories.size)
   }

@@ -50,13 +50,14 @@ class TabSeparatedArticleParser(val hasHeaderRow: Boolean) extends ArticleParser
       debug("parsing input line '%s'", line)
       require(7 == tokens.size, {error("Input line only had %d tokens", tokens.size)})
 
+      val articleId = ""
       val edition = Article.dFormat.parse(tokens(1))
       val page = tokens(2).toInt
       val categories = tokens(6).split(",").toList map(_.trim)
 
       debug("categories = %s", categories.mkString)
 
-      new Article(tokens(0), edition, page, tokens(3), tokens(4), tokens(5), categories)
+      new Article(articleId, tokens(0), edition, page, tokens(3), tokens(4), tokens(5), categories)
     }
     
     
