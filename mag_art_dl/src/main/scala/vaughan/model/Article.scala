@@ -1,6 +1,7 @@
 package vaughan.model
 
 import java.util.Date;
+import java.text.SimpleDateFormat
 
 /**
  * <p>Represents an article I found in a magazine that I clipped for saving.</p>
@@ -56,20 +57,21 @@ object Article {
     
   val dFormat = new java.text.SimpleDateFormat("MMM yyyy")
   
-  val mockArticle1 = new Article("Cruising World", 
-                                 dFormat.parse("Feb 2012"),
-                                 23,
-                                 "How to foo your bar",
-                                 "Describes what foos are best in bolstering your bar",
-                                 "",
-                                 List("foo","bar"))
-  
-  
-  val mockArticle2 = new Article("Sailing World", 
-                                 dFormat.parse("December 2011"),
-                                 7,
-                                 "Lorem Ipsum",
-                                 "Whatever description you want goes here",
-                                 "These are my notes for this artcle",
-                                 List("bar","baz"))
+  val mockArticle1 = mockInstance(publication = "Cruising World")
+  val mockArticle2 = mockInstance(publication = "Sailing World", edition = "Dec 2011")
+
+  /**
+   * Creates a new article with a bunch of sensible defaults
+   */
+  def mockInstance(publication: String       = "Cruising World",
+                   edition:     String       = "Jan 2012",
+                   page:        Int          = 123,
+                   title:       String       = "Lorem Ipsum",
+                   description: String       = "Some description of the article",
+                   notes:       String       = "My Notes",
+                   categories:  List[String] = List("foo", "bar")
+                  ): Article = {
+    val editionDate = Article.dFormat.parse(edition)
+    new Article(publication, editionDate, page, title, description, notes, categories)
+  }
 }

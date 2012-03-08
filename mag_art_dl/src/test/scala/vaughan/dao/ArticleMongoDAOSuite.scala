@@ -10,9 +10,11 @@ import com.mongodb.casbah.Imports._
 
 @RunWith(classOf[JUnitRunner])
 class ArticleMongoDBSuite extends FunSuite {
+  
+  val dao = new ArticleMongoDAO(null)
 
   test("Find all returns a couple mock articles") {
-    assertEquals(2, ArticleMongoDAO.findAll().size)
+    assertEquals(2, dao.findAll().size)
   }
   
   test("test connection to localhost mongodb") {

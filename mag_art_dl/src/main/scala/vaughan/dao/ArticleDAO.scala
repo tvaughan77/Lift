@@ -6,11 +6,8 @@ import vaughan.model.Article
  * A DAO for Article objects
  * 
  */
-trait ArticleDAO {
+trait ArticleDAO extends GenericDAO[Article] {
   
-  /**
-   * @return All articles from the underlying data source
-   */
-  def findAll(): List[Article]
+  
   
 }
