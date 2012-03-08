@@ -20,4 +20,17 @@ class ArticleMongoDBSuite extends FunSuite {
     val mongoDB = mongoConn("casbah_test")
   }
   
+  test("test inserting and retrieving") {
+    val mongoColl = MongoConnection()("casbah_test")("test_data")
+    val user1 = MongoDBObject("user" -> "bwmcadams",
+                              "email" -> "~~brendan~~<AT>10genDOTcom")
+    val user2 = MongoDBObject("user" -> "someOtherUser")
+    mongoColl += user1
+    mongoColl += user2
+    mongoColl.find()
+    // com.mongodb.casbah.MongoCursor =
+    // MongoCursor{Iterator[DBObject] with 2 objects.}
+
+    for { x <- mongoColl} println(x)
+  }
 }
