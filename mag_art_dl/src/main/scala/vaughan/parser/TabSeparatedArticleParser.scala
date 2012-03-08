@@ -60,7 +60,7 @@ class TabSeparatedArticleParser(val hasHeaderRow: Boolean) extends ArticleParser
     }
     
     
-    articles.toList
+    articles.toList.sorted  
   }
 }
 

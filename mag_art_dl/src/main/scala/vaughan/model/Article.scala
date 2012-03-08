@@ -19,7 +19,7 @@ class Article(val publication: String,
               val title: String,
               val description: String,
               val notes: String,
-              val categories: List[String]) {
+              val categories: List[String]) extends Ordered[Article] {
   
   require(publication != null && !publication.isEmpty)
   require(edition!= null)
@@ -37,6 +37,19 @@ class Article(val publication: String,
            title: String,
            categories: List[String]) = this(publication, Article.dFormat.parse(edition), page, title, "", "", categories)
 
+  /**
+   * <p>The natural sorting of Articles first by publication date and then by title</p>
+   */
+  @Override
+  def compare(that: Article): Int = {
+    if(that.edition.after(this.edition)) {
+      -1
+    } else if(that.edition.before(this.edition)) {
+      1
+    } else {
+      this.title.compare(that.title)
+    }
+  }
 }
 
 object Article {

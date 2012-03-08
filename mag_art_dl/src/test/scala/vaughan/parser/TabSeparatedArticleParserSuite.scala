@@ -36,13 +36,13 @@ class TabSeparatedArticleParserSuite extends FunSuite {
   test("Reading from a header-less test source file with 3 articles gets parsed correctly") {
     val articles = getArticles("three_articles.tdf", false)
     assertEquals(3, articles.size)
-    assertEquals("Sailing World", articles(0).publication)
-    assertEquals("My notes about the article", articles(0).notes)
 
-    assertEquals("Beta Title", articles(1).title)
-    assertEquals(1200, articles(1).page)
-    
-    assertEquals(3, articles(2).categories.size)
+    assertEquals(2, articles(0).categories.size)
+    assertEquals("Sailing World", articles(1).publication)
+    assertEquals("My notes about the article", articles(1).notes)
+
+    assertEquals("Beta Title", articles(2).title)
+    assertEquals(1200, articles(2).page)
   }
   
   private def getArticles(testFile: String, hasHeaderRow: Boolean): List[Article] = {
