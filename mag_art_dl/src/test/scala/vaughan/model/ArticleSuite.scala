@@ -31,6 +31,7 @@ class ArticleSuite extends FunSuite {
                                 "The name of the article",
                                 List("x", "y", "z"))
     assertNotNull(myArticle)
+    assertNull(myArticle.id)
     assertTrue(myArticle.description.isEmpty)
     assertTrue(myArticle.notes.isEmpty)
     assertEquals(3, myArticle.categories.size)
@@ -39,7 +40,7 @@ class ArticleSuite extends FunSuite {
   
   test("Not providing a publication is an exception") {
     intercept[IllegalArgumentException] {
-      new Article("", "Jul 2011", 1, "Title", List("foo"))
+      new Article(null, "Jul 2011", 1, "Title", List("foo"))
     }
   }
   

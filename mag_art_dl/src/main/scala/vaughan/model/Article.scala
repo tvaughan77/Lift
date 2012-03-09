@@ -37,7 +37,7 @@ case class Article(id: String,
            edition: String,
            page: Int,
            title: String,
-           categories: List[String]) = this("", publication, Article.dFormat.parse(edition), page, title, "", "", categories)
+           categories: List[String]) = this(null, publication, Article.dFormat.parse(edition), page, title, "", "", categories)
 
   /**
    * <p>The natural sorting of Articles first by publication date and then by title</p>
@@ -64,7 +64,7 @@ object Article {
   /**
    * Creates a new article with a bunch of sensible defaults
    */
-  def mockInstance(id:          String       = "",
+  def mockInstance(id:          String       = null,
                    publication: String       = "Cruising World",
                    edition:     String       = "Jan 2012",
                    page:        Int          = 123,

@@ -1,6 +1,5 @@
 package vaughan
 
-import org.springframework.context.ConfigurableApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext
 import vaughan.dao.ArticleDAO
 import vaughan.model.Article

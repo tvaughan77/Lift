@@ -3,36 +3,39 @@ package vaughan.dao
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.FunSuite
+import org.scalatest.BeforeAndAfter
 import org.junit.Assert._
 import java.text.SimpleDateFormat
 import com.mongodb.casbah.Imports._
+import com.mongodb.Mongo
+import org.springframework.context.support.ClassPathXmlApplicationContext
+import org.springframework.data.mongodb.core.MongoTemplate
+import vaughan.model.Article
 
 
 @RunWith(classOf[JUnitRunner])
-class ArticleMongoDBSuite extends FunSuite {
+class ArticleMongoDBSuite extends FunSuite with BeforeAndAfter {
   
-  val dao = new ArticleMongoDAO(null)
-
+  val context = new ClassPathXmlApplicationContext("applicationContext.xml")
+  val mongo = context.getBean("mongo").asInstanceOf[Mongo]
+  val mongoOperations = new MongoTemplate(mongo, "testdb")
+  val articleDAO = new ArticleMongoDAO(mongoOperations)  
+  
+  before {
+    
+  }
+  
+  // FIXME - there's got to be a better way of associating DAOs, POSOs and collectionNames than this
+  after {
+    //mongoOperations.dropCollection(articleDAO.collectionName)
+  }
+  
   test("Find all returns a couple mock articles") {
-    assertEquals(2, dao.findAll().size)
-  }
-  
-  test("test connection to localhost mongodb") {
-    val mongoConn = MongoConnection()
-    val mongoDB = mongoConn("casbah_test")
-  }
-  
-  test("test inserting and retrieving") {
-    val mongoColl = MongoConnection()("casbah_test")("test_data")
-    val user1 = MongoDBObject("user" -> "bwmcadams",
-                              "email" -> "~~brendan~~<AT>10genDOTcom")
-    val user2 = MongoDBObject("user" -> "someOtherUser")
-    mongoColl += user1
-    mongoColl += user2
-    mongoColl.find()
-    // com.mongodb.casbah.MongoCursor =
-    // MongoCursor{Iterator[DBObject] with 2 objects.}
-
-    for { x <- mongoColl} println(x)
+    articleDAO.save(Article.mockArticle1)
+    articleDAO.save(Article.mockArticle2)
+    
+//    val articles = articleDAO.findAll()
+//    assertNotNull(articles)
+//    assertEquals(2, articles.size)
   }
 }
